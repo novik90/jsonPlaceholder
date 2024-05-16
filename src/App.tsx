@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
+import classes from "./App.module.css";
+import "./index.module.css";
+
 function App() {
   const [date, setDate] = useState(dayjs().format("HH:mm:ss"));
 
@@ -8,18 +11,15 @@ function App() {
     const timer = setInterval(() => {
       setDate(dayjs().format("HH:mm:ss"));
     }, 1000);
-    
+
     return () => {
       clearInterval(timer);
     }
   }, [])
 
   return (
-    <div>
-      <div>
-        <h1>clock</h1>
-        <div>{date}</div>
-      </div>
+    <div className={classes.main}>
+      <h2 className={classes.clock}>{date}</h2>
     </div>
   );
 }
